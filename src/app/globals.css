@@ -2,26 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+.scroll-downs {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    transform: translate(-50%,-50%);
+    
+    width :34px;
+    height: 55px;
+
+
   }
-}
+  .mousey {
+    width: 3px;
+    padding: 10px 15px;
+    height: 35px;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    opacity: 0.75;
+    box-sizing: content-box;
+  }
+  .scroller {
+    width: 3px;
+    height: 10px;
+    border-radius: 25%;
+    background-color: #fff;
+    animation-name: scroll;
+    animation-duration: 2.2s;
+    animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+    animation-iteration-count: infinite;
+  }
+  @keyframes scroll {
+    0% { opacity: 0; }
+    10% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(15px); opacity: 0;}
+  }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+  .fade-in-bottom {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInFromY .5s forwards;
+  }
+
+  .fade-in-top {
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: fadeInFromY .5s forwards;
+  }
+
+  .fade-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: fadeInFromX .5s forwards;
+  }
+
+  .fade-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    animation: fadeInFromX .5s forwards;
+  }
+
+  @keyframes fadeInFromY {
+    to {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInFromX {
+    to {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
